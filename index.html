@@ -6,20 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatório Climático</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 
 <body>
     <main>
-        <div class="select-wrapper">
-            <select id="estados">
-                <option value="none">-- Selecione um estado --</option>
-            </select>
-            <select id="cidades">
-                <option value="none">-- Selecione uma cidade --</option>
-            </select>
+
+        <div class="row">
+            <div class="select-wrapper">
+                <div id="data-hora">
+                    <span id="hora">10:19</span>
+                    <span id="data">06/11/2024</span>
+                </div>
+                <select id="estados">
+                    <option value="none">-- Selecione um estado --</option>
+                </select>
+                <select id="cidades">
+                    <option value="none">-- Selecione uma cidade --</option>
+                </select>
+            </div>
+            <div class="weather-wrapper">
+                <div class="temps">
+                    <span id="endereco">Balneário Camboriú, SC</span>
+
+                    <span id="temperatura" class="temperatura">32°C</span>
+                    <span id="sensacao" class="sensacao">Sensação • 35°C</span>
+                </div>
+            </div>
         </div>
     </main>
 </body>
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 
 </html>
