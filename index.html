@@ -11,26 +11,45 @@
 
 <body>
     <main>
-        <span style="background-color: rgba(255, 187, 0, 0.3); padding: 0.1rem 1rem; border-radius: 1rem; font-weight: 600; color: rgb(255, 196, 0);">Demonstração</span>
-        <div class="row">
-            <div class="select-wrapper">
-                <div id="data-hora">
-                    <span id="hora">10:19</span>
-                    <span id="data">06/11/2024</span>
+        <h1 style="font-weight: lighter; margin: 0.5rem">WeatherForecast</h1>
+        <span class="text-bg" style="font-size: smaller; margin-bottom: 0.5rem;">A API pode retornar resultados
+            incorretos.</span>
+        <div class="col">
+            <div class="row">
+                <div class="select-wrapper">
+                   
+                    <select id="estados">
+                        <option value="none">-- Selecione um estado --</option>
+                    </select>
+                    <select id="cidades">
+                        <option value="none">-- Selecione uma cidade --</option>
+                    </select>
                 </div>
-                <select id="estados">
-                    <option value="none">-- Selecione um estado --</option>
-                </select>
-                <select id="cidades">
-                    <option value="none">-- Selecione uma cidade --</option>
-                </select>
-            </div>
-            <div class="weather-wrapper">
-                <div class="temps">
-                    <span id="endereco">Balneário Camboriú, SC</span>
-
-                    <span id="temperatura" class="temperatura">32°C</span>
-                    <span id="sensacao" class="sensacao">Sensação • 35°C</span>
+                <div id="weather-wrapper" class="weather-wrapper">
+                    <div id="resposta">
+                        <span class="material-symbols-outlined" style="font-size: 64px; opacity: 50%;">
+                            block
+                        </span>
+                        <p>Não foi possível buscar as informações da API</p>
+                    </div>
+                    <div id="temps">
+                        <div class="col">
+                            <div class="row" style="align-items: center; text-align: center;">
+                                <div class="col">
+                                    <span id="addr-cidade">...</span>
+                                    <span id="addr-estado">...</span>
+                                </div>
+                                <img id="weatherIcon">
+                            </div>
+                            <div id="data-hora">
+                                <span id="hora">...</span>
+                                <span id="data">...</span>
+                            </div>
+                        </div>
+                        <span id="temperatura" class="temperatura">...</span>
+                        <span id="sensacao" class="text-bg" style="margin-top: 5px;">...</span>
+                        <span id="mensagem" class="">...</span>
+                    </div>
                 </div>
             </div>
         </div>
