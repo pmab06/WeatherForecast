@@ -114,6 +114,17 @@ option {
     background-color: rgb(24, 25, 27);
 }
 
+hr{
+    display: none;
+    color: white;
+    width: 100%;
+    opacity: 50%;
+}
+h2{
+    margin: 0;
+    font-size: medium;
+    font-weight: 600;
+}
 .temperatura {
     font-size: 64px;
     font-weight: lighter;
@@ -127,6 +138,28 @@ option {
     justify-content: center;
     margin-inline: 2rem;
 }
+.aq-wrapper{
+    display: none;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.aq-wrapper>*{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.aq-wrapper>.row>*{
+    margin: 0.1rem 0.5rem;
+    padding: 0.3rem 1rem;
+    border-radius: 0.7rem;
+    min-width: 4rem;
+}
+.aq-wrapper>.row>span>b{
+    margin-right: 0.5rem;
+    font-size: large;
+}
 
 .text-bg {
     padding: 0.1rem 0.5rem;
@@ -135,26 +168,58 @@ option {
     color: black;
 }
 
-#data-hora {
+.data-hora {
     display: flex;
-    flex-direction: row;
     width: 100%;
-    justify-content: center;
     align-items: center;
     font-size: small;
 }
 
-#data-hora>* {
+.display-bg {
     font-family: monospace;
-    font-size: large;
     border: 1px solid white;
     background-color: rgba(0, 0, 0, 0.3);
-    margin: 0.5rem;
-    margin-left: 0;
     padding: 0.15rem 0.75rem;
     border-radius: 1rem;
+    margin-inline: 0.2rem;
 }
 
+#aqi{
+    background-color: white;
+    width: 100%;
+    margin: 0.5rem 0 1rem 0;
+    border-radius: 0.7rem;
+    padding: 0.2rem;
+}
+#aqi.case1{
+    background-color: rgb(0, 178, 48);
+    box-shadow: 0px 0px 10px 0px rgb(0, 207, 69);
+
+}
+#aqi.case2{
+    background-color: rgb(104, 178, 0);
+    box-shadow: 0px 0px 10px 0px rgb(100, 193, 0);
+
+}
+#aqi.case3{
+    background-color: rgb(179, 161, 0);
+    box-shadow: 0px 0px 10px 0px rgb(238, 255, 0);
+
+}
+#aqi.case3{
+    background-color: rgb(147, 81, 0);
+    box-shadow: 0px 0px 10px 0px rgb(210, 95, 0);
+
+}
+#aqi.case4{
+    background-color: rgb(154, 0, 0);
+    box-shadow: 0px 0px 10px 0px rgb(255, 0, 0);
+}
+#aqi.case5{
+    background-color: rgb(255, 0, 234);
+    box-shadow: 0px 0px 10px 0px rgb(255, 0, 234);
+
+}
 #sensacao {
     font-size: small
 }
@@ -210,6 +275,11 @@ main {
     transition: --top-color 3s, --bottom-color 3s, --degree 1s;
 }
 
+main.chuva{
+    --top-color: rgb(39, 48, 49);
+    --bottom-color: rgb(121, 142, 147);
+    --degree: 180deg; 
+}
 main.tarde {
     --top-color: rgb(70, 38, 156);
     --bottom-color: rgb(255, 170, 100);

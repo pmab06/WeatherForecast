@@ -11,13 +11,17 @@
 
 <body>
     <main>
+        <div class="data-hora" id="data-hora-atual">
+            <span class="display-bg" style="font-size: large" id="horaAt">...</span>
+            <span class="display-bg" style="font-size: large" id="dataAt">...</span>
+        </div>
         <h1 style="font-weight: lighter; margin: 0.5rem">WeatherForecast</h1>
         <span class="text-bg" style="font-size: smaller; margin-bottom: 0.5rem;">A API pode retornar resultados
             incorretos.</span>
         <div class="col">
             <div class="row">
                 <div class="select-wrapper">
-                   
+
                     <select id="estados">
                         <option value="none">-- Selecione um estado --</option>
                     </select>
@@ -41,15 +45,36 @@
                                 </div>
                                 <img id="weatherIcon">
                             </div>
-                            <div id="data-hora">
-                                <span id="hora">...</span>
-                                <span id="data">...</span>
-                            </div>
+                            <span id="mensagem" class="">...</span>
                         </div>
                         <span id="temperatura" class="temperatura">...</span>
-                        <span id="sensacao" class="text-bg" style="margin-top: 5px;">...</span>
-                        <span id="mensagem" class="">...</span>
+                        <span id="sensacao" class="text-bg">...</span>
+                        <div class="data-hora col" id="data-hora-local">
+                            <div class="row" style="margin-top: 1rem">
+                                <span class="display-bg" id="hora">...</span>
+                                <span class="display-bg" id="data">...</span>
+                            </div>
+                            <span style="font-size: small; margin-bottom: 1rem; text-align: center">Horário do local no
+                                momento da busca</span>
+                        </div>
                     </div>
+                </div>
+            </div>
+            <hr>
+            <div class="aq-wrapper col" id="aq-wrapper">
+                <div class="col">
+                    <h2>Qualidade do ar</h2>
+                    <span id="aqi">...</span>
+                </div>
+                <div class="row">
+                    <span class='text-bg' id="co">...</span>
+                    <span class='text-bg' id="o3">...</span>
+                    <span class='text-bg' id="no2">...</span>
+                </div>
+                <div class="row">
+                    <span class='text-bg' id="so2">...</span>
+                    <span class='text-bg' id="pm2_5">...</span>
+                    <span class='text-bg' id="pm10">...</span>
                 </div>
             </div>
         </div>
