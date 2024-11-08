@@ -14,7 +14,6 @@ window.addEventListener('load', async () => {
     let dataAtual = new Date()
     const dataHoraAt = document.getElementById('data-horaAt')
 
-
     dataHoraAt.innerHTML = `${doisDigitos(dataAtual.getHours())}${doisP ? ' ' : ':'}${doisDigitos(dataAtual.getMinutes())} • ${doisDigitos(dataAtual.getDate())}/${doisDigitos(dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}`
 
     let clockAtualUpdate = setInterval(() => {
@@ -25,6 +24,7 @@ window.addEventListener('load', async () => {
 
     // Elementos HTML
     const mainWrapper = document.querySelector('main')
+    const tableWrapper = document.getElementById('table-wrapper')
     const selectEstados = document.getElementById('estados');
     const selectCidades = document.getElementById('cidades');
     const infoClima = document.getElementById('weather-wrapper');
@@ -66,7 +66,6 @@ window.addEventListener('load', async () => {
                 let cidadeSelecionada = cidades.find(cidade => cidade.id === Number(this.value)).nome
                 let endereco = `${estadoSelecionado}, ${cidadeSelecionada}`
                 let weatherData = await getApi(`https://api.weatherapi.com/v1/current.json?key=${api_key}&q=${endereco}&aqi=yes&lang=pt`)
-                console.log(JSON.stringify(weatherData))
 
                 infoClima.style.display = 'flex';
 
@@ -84,7 +83,14 @@ window.addEventListener('load', async () => {
                     // ========= qualidade do ar
                     document.getElementById('aq-wrapper').style.display = 'flex'
                     let textoAqi = null
-                    document.getElementById('aqi').classList.remove('case1', 'case2', 'case3', 'case4', 'case5', 'case6')
+                    document.getElementById('aqi').classList.remove(
+                        'case1',
+                        'case2',
+                        'case3',
+                        'case4',
+                        'case5',
+                        'case6'
+                    )
                     switch (weatherData.current.air_quality["us-epa-index"]) {
                         case 1:
                             textoAqi = 'Boa'
@@ -117,11 +123,20 @@ window.addEventListener('load', async () => {
                     document.getElementById('pm2_5').innerHTML = `<b>PM₂.₅</b> ${weatherData.current.air_quality.pm2_5} µg/m³`;
                     document.getElementById('pm10').innerHTML = `<b>PM₁₀</b> ${weatherData.current.air_quality.pm10} µg/m³`;
 
-                    gerarTabela(endereco)
                     // =========
                     hora.innerHTML = `${doisDigitos(dataLocalEscolhido.getHours())}:${doisDigitos(dataLocalEscolhido.getMinutes())}`
                     data.innerHTML = `${doisDigitos(dataLocalEscolhido.getDate())}/${doisDigitos(dataLocalEscolhido.getMonth() + 1)}/${dataLocalEscolhido.getFullYear()}`
                     // ====
+                    
+                    document.getElementById('mensagem-relatorio').innerHTML = `No dia 
+                    <b>${doisDigitos(dataAtual.getDate())}/${doisDigitos(dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}</b>
+                    às 
+                    <b>${doisDigitos(dataAtual.getHours())}:${doisDigitos(dataAtual.getMinutes())}</b> 
+                    foram coletados dados climáticos de
+                    <b>${weatherData.location.name}, ${weatherData.location.region}</b>, presentes no quadro abaixo.
+                    `
+                    tableWrapper.innerHTML = ''
+                    gerarTabela(endereco,tableWrapper)
 
                     // ========= Muda a cor do wrapper dependendo da hora e do clima
                     // Está chovendo?
@@ -134,7 +149,7 @@ window.addEventListener('load', async () => {
                         } else if (dataLocalEscolhido.getHours() > 15) {
                             mainWrapper.classList.add('tarde')
                         } else {
-                            mainWrapper.classList.remove('tarde', 'noite')
+                            mainWrapper.classList.remove('tarde', 'noite','chuva')
                         }
                     }
                 } else {

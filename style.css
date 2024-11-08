@@ -2,6 +2,9 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     scrollbar-color: rgba(255, 255, 255, 0.1) rgba(0, 0, 0, 0.3);
     scrollbar-width: thin;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #cidades {
@@ -32,7 +35,7 @@ main {
     min-height: 100%;
     align-items: center;
     padding: 1rem;
-    padding-right: 1.5rem;
+    overflow: hidden;
 }
 
 main>* {
@@ -75,6 +78,42 @@ main>.row>div {
     flex: 1.5;
     align-items: center;
     justify-content: center;
+}
+
+#table-wrapper {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+table{
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+}
+#table-wrapper>* {
+    margin: 0.5rem;
+}
+
+#table-wrapper th {
+    background-color: white;
+    color: black;
+    border-radius: 0.7rem;
+    margin-inline: 1rem;
+}
+
+#table-wrapper td {
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-inline: 2rem;
+}
+
+#table-wrapper td, #table-wrapper th {
+    padding: 0.5rem;
+    overflow: hidden; 
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
 #temps {
@@ -267,15 +306,14 @@ h2 {
     font-size: small;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
     main {
         padding: 3rem;
         padding-top: 2rem;
         border-radius: 2rem;
         border: 1px solid white;
-        width: initial;
-        height: min-content;
         max-width: 60vw;
+        height: min-content;
         box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
 
     }
@@ -323,8 +361,8 @@ main.chuva {
 }
 
 main.tarde {
-    --top-color: rgb(70, 38, 156);
-    --bottom-color: rgb(255, 170, 100);
+    --top-color: rgb(131, 59, 138);
+    --bottom-color: rgb(255, 146, 57);
     --degree: -165deg;
 }
 
