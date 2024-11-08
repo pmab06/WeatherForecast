@@ -1,22 +1,6 @@
-const api_key = '4cca2c8da332430895e232425240111' // não tem como esconder essa chave sem deixar a aplicação mais elaborada, então vai ficar exposta mesmo
-
-// Função simples para retornar uma opção em HTML (string)
-function createOption(optionValue, optionText) {
-    return `<option value="${optionValue}">${optionText}</option>`
-}
-
-// Função simples que busca e retorna dados de APIs
-async function getApi(url) {
-    let response = await fetch(url);
-    let data = await response.json();
-    return data;
-}
-
-// 1 ---> 01
-function doisDigitos(n) {
-    return (n < 10 ? '0' : '') + n;
-}
-
+import gerarTabela from "./gerarTabela.js";
+import api_key from "./api_key.js";
+import { createOption, getApi, doisDigitos } from "./tools.js";
 // Códigos da API *weatherapi* que indicam chuva
 const rainCodes = [
     1063, 1150, 1153, 1180, 1183, 1186, 1189, 1192, 1195,
@@ -28,18 +12,15 @@ window.addEventListener('load', async () => {
 
     let doisP = true
     let dataAtual = new Date()
-    const horaAt = document.getElementById('horaAt')
-    const dataAt = document.getElementById('dataAt')
+    const dataHoraAt = document.getElementById('data-horaAt')
 
 
-    horaAt.innerHTML = `${doisDigitos(dataAtual.getHours())}${doisP ? ' ' : ':'}${doisDigitos(dataAtual.getMinutes())}`
-    dataAt.innerHTML = `${doisDigitos(dataAtual.getDate())}/${doisDigitos(dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}`
+    dataHoraAt.innerHTML = `${doisDigitos(dataAtual.getHours())}${doisP ? ' ' : ':'}${doisDigitos(dataAtual.getMinutes())} • ${doisDigitos(dataAtual.getDate())}/${doisDigitos(dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}`
 
     let clockAtualUpdate = setInterval(() => {
         dataAtual = new Date()
         doisP = !doisP
-        horaAt.innerHTML = `${doisDigitos(dataAtual.getHours())}${doisP ? ' ' : ':'}${doisDigitos(dataAtual.getMinutes())}`
-        dataAt.innerHTML = `${doisDigitos(dataAtual.getDate())}/${doisDigitos(dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}`
+        dataHoraAt.innerHTML = `${doisDigitos(dataAtual.getHours())}${doisP ? ' ' : ':'}${doisDigitos(dataAtual.getMinutes())} • ${doisDigitos(dataAtual.getDate())}/${doisDigitos(dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}`
     }, 1000)
 
     // Elementos HTML
@@ -83,7 +64,8 @@ window.addEventListener('load', async () => {
             // Adiciona listener de eventos no select cidades
             selectCidades.addEventListener('change', async function () {
                 let cidadeSelecionada = cidades.find(cidade => cidade.id === Number(this.value)).nome
-                let weatherData = await getApi(`https://api.weatherapi.com/v1/current.json?key=${api_key}&q=${estadoSelecionado}, ${cidadeSelecionada}&aqi=yes&lang=pt`)
+                let endereco = `${estadoSelecionado}, ${cidadeSelecionada}`
+                let weatherData = await getApi(`https://api.weatherapi.com/v1/current.json?key=${api_key}&q=${endereco}&aqi=yes&lang=pt`)
                 console.log(JSON.stringify(weatherData))
 
                 infoClima.style.display = 'flex';
@@ -100,7 +82,6 @@ window.addEventListener('load', async () => {
                     document.getElementById('addr-estado').innerHTML = `${weatherData.location.region}, ${weatherData.location.country}`
                     document.getElementById('mensagem').innerHTML = `${weatherData.current.condition.text}`
                     // ========= qualidade do ar
-                    document.querySelector('hr').style.display = 'block'
                     document.getElementById('aq-wrapper').style.display = 'flex'
                     let textoAqi = null
                     document.getElementById('aqi').classList.remove('case1', 'case2', 'case3', 'case4', 'case5', 'case6')
@@ -136,6 +117,7 @@ window.addEventListener('load', async () => {
                     document.getElementById('pm2_5').innerHTML = `<b>PM₂.₅</b> ${weatherData.current.air_quality.pm2_5} µg/m³`;
                     document.getElementById('pm10').innerHTML = `<b>PM₁₀</b> ${weatherData.current.air_quality.pm10} µg/m³`;
 
+                    gerarTabela(endereco)
                     // =========
                     hora.innerHTML = `${doisDigitos(dataLocalEscolhido.getHours())}:${doisDigitos(dataLocalEscolhido.getMinutes())}`
                     data.innerHTML = `${doisDigitos(dataLocalEscolhido.getDate())}/${doisDigitos(dataLocalEscolhido.getMonth() + 1)}/${dataLocalEscolhido.getFullYear()}`
@@ -159,6 +141,7 @@ window.addEventListener('load', async () => {
                     // mostrar mensagem de erro
                     document.getElementById('resposta').style.display = 'flex'
                     document.getElementById('temps').style.display = 'none'
+                    document.getElementById('aq-wrapper').style.display = 'none'
                 }
             });
         }

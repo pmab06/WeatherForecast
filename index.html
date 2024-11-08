@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Relatório Climático</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=block" />
 </head>
 
 <body>
     <main>
         <div class="data-hora" id="data-hora-atual">
-            <span class="display-bg" style="font-size: large" id="horaAt">...</span>
-            <span class="display-bg" style="font-size: large" id="dataAt">...</span>
+            <span class="display-bg" style="font-size: large" id="data-horaAt">...</span>
         </div>
         <h1 style="font-weight: lighter; margin: 0.5rem">WeatherForecast</h1>
         <span class="text-bg" style="font-size: smaller; margin-bottom: 0.5rem;">A API pode retornar resultados
@@ -60,8 +60,8 @@
                     </div>
                 </div>
             </div>
-            <hr>
             <div class="aq-wrapper col" id="aq-wrapper">
+                <hr>
                 <div class="col">
                     <h2>Qualidade do ar</h2>
                     <span id="aqi">...</span>
@@ -70,12 +70,16 @@
                     <span class='text-bg' id="co">...</span>
                     <span class='text-bg' id="o3">...</span>
                     <span class='text-bg' id="no2">...</span>
-                </div>
-                <div class="row">
                     <span class='text-bg' id="so2">...</span>
                     <span class='text-bg' id="pm2_5">...</span>
                     <span class='text-bg' id="pm10">...</span>
                 </div>
+                <hr style="margin-top: 3rem">
+                <div class="relatorio-diario">
+                    <div class="mensagem-relatorio" style="margin: 1rem 0">...</div>
+                </div>
+                <hr>
+
             </div>
         </div>
     </main>
