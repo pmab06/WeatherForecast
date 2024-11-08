@@ -79,20 +79,9 @@ main>.row>div {
     align-items: center;
     justify-content: center;
 }
-#btn-salvarpdf{
-    display: inline-flex;
-    background: linear-gradient(rgb(0, 180, 60),rgb(0, 146, 66));
-    color: white;
-    border: 2px solid rgba(163, 255, 163, 0.5);
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
-}
-#btn-salvarpdf span{
-    margin-right: 0.5rem;
-}
+
+
+
 #table-wrapper {
     display: flex;
     flex: 1;
@@ -100,11 +89,13 @@ main>.row>div {
     max-width: 100%;
     overflow-x: auto;
 }
-table{
+
+table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
 }
+
 #table-wrapper>* {
     margin: 0.5rem;
 }
@@ -122,9 +113,10 @@ table{
     margin-inline: 2rem;
 }
 
-#table-wrapper td, #table-wrapper th {
+#table-wrapper td,
+#table-wrapper th {
     padding: 0.5rem;
-    overflow: hidden; 
+    overflow: hidden;
     vertical-align: middle;
     white-space: nowrap;
 }
@@ -325,6 +317,7 @@ h2 {
         padding-top: 2rem;
         border-radius: 2rem;
         border: 1px solid white;
+        width: max-content;
         max-width: 60vw;
         height: min-content;
         box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.4);
@@ -383,4 +376,33 @@ main.noite {
     --top-color: rgb(27, 58, 112);
     --bottom-color: rgb(0, 2, 21);
     --degree: -135deg;
+}
+
+#btn-salvarpdf {
+    background: linear-gradient(var(--degree), var(--top-color), var(--bottom-color));
+    display: inline-flex;
+    color: white;
+    border: 2px solid rgba(163, 255, 163, 0.5);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    --top-color: rgb(0, 180, 60);
+    --bottom-color: rgb(0, 146, 66);
+    --degree: 180deg;
+    transition: --top-color 0.1s, --bottom-color 0.1s;
+}
+
+#btn-salvarpdf span {
+    margin-right: 0.5rem;
+}
+
+#btn-salvarpdf:hover{
+    --top-color: rgb(0, 144, 48);
+    --bottom-color: rgb(0, 73, 33);
+}
+#btn-salvarpdf:active{
+    --top-color: rgb(0, 38, 17);
+    --bottom-color: rgb(0, 80, 43);
 }
