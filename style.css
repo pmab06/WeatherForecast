@@ -79,7 +79,20 @@ main>.row>div {
     align-items: center;
     justify-content: center;
 }
-
+#btn-salvarpdf{
+    display: inline-flex;
+    background: linear-gradient(rgb(0, 180, 60),rgb(0, 146, 66));
+    color: white;
+    border: 2px solid rgba(163, 255, 163, 0.5);
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+#btn-salvarpdf span{
+    margin-right: 0.5rem;
+}
 #table-wrapper {
     display: flex;
     flex: 1;

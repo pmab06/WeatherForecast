@@ -27,11 +27,11 @@ const gerarTabela = async (endereco, elemento) => {
         let header_row = createTableRow([
             'Horário',
             'Condição',
-            'Chuva (%)',
-            'Temperatura (C°)',
-            'Sensação (C°)',
-            'Umidade (%)',
-            'Vento (KM/H)'
+            'Chuva',
+            'Temperatura',
+            'Sensação',
+            'Umidade',
+            'Vento'
         ],
             'header')
         elemento.appendChild(table)

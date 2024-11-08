@@ -1,6 +1,6 @@
 import gerarTabela from "./gerarTabela.js";
 import api_key from "./api_key.js";
-import { createOption, getApi, doisDigitos } from "./tools.js";
+import { createOption, getApi, doisDigitos, salvarPDF } from "./tools.js";
 // Códigos da API *weatherapi* que indicam chuva
 const rainCodes = [
     1063, 1150, 1153, 1180, 1183, 1186, 1189, 1192, 1195,
@@ -127,7 +127,7 @@ window.addEventListener('load', async () => {
                     hora.innerHTML = `${doisDigitos(dataLocalEscolhido.getHours())}:${doisDigitos(dataLocalEscolhido.getMinutes())}`
                     data.innerHTML = `${doisDigitos(dataLocalEscolhido.getDate())}/${doisDigitos(dataLocalEscolhido.getMonth() + 1)}/${dataLocalEscolhido.getFullYear()}`
                     // ====
-                    
+
                     document.getElementById('mensagem-relatorio').innerHTML = `No dia 
                     <b>${doisDigitos(dataAtual.getDate())}/${doisDigitos(dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}</b>
                     às 
@@ -135,8 +135,12 @@ window.addEventListener('load', async () => {
                     foram coletados dados climáticos de
                     <b>${weatherData.location.name}, ${weatherData.location.region}</b>, presentes no quadro abaixo.
                     `
+                    document.getElementById('btn-salvarpdf').addEventListener('click', function () {
+                        window.scrollTo(0,0)
+                        salvarPDF(document.querySelector('body'), 'relatorio')
+                    })
                     tableWrapper.innerHTML = ''
-                    gerarTabela(endereco,tableWrapper)
+                    gerarTabela(endereco, tableWrapper)
 
                     // ========= Muda a cor do wrapper dependendo da hora e do clima
                     // Está chovendo?
@@ -149,7 +153,7 @@ window.addEventListener('load', async () => {
                         } else if (dataLocalEscolhido.getHours() > 15) {
                             mainWrapper.classList.add('tarde')
                         } else {
-                            mainWrapper.classList.remove('tarde', 'noite','chuva')
+                            mainWrapper.classList.remove('tarde', 'noite', 'chuva')
                         }
                     }
                 } else {

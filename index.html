@@ -7,7 +7,10 @@
     <title>Relatório Climático</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=block" />
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,1,-50..200&icon_names=block,download_2" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body>
@@ -77,6 +80,11 @@
                 <hr style="margin-top: 3rem">
                 <div class="relatorio-diario">
                     <div id="mensagem-relatorio" style="margin: 1rem; text-align: start;">...</div>
+                    <button type="button" id="btn-salvarpdf">
+                        <span class="material-symbols-outlined">
+                            download_2
+                        </span>Salvar em PDF
+                    </button>
                 </div>
                 <hr>
 
