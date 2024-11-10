@@ -12,7 +12,7 @@ async function salvarPDF(elemento,filename){
         jsPDF: {
             unit:'mm',
             format:'a4' ,
-            orientation:'portrait',
+            orientation:'landscape',
         }
     }
     html2pdf().set(options).from(elemento).save()
