@@ -10,17 +10,17 @@ const rainCodes = [
 // Iniciar processamento assim que a página carregar
 window.addEventListener('load', async () => {
 
-    let doisP = true
+    // let doisP = true
     let dataAtual = new Date()
-    const dataHoraAt = document.getElementById('data-horaAt')
+    // const dataHoraAt = document.getElementById('data-horaAt')
 
-    dataHoraAt.innerHTML = `${doisDigitos(dataAtual.getHours())}${doisP ? ' ' : ':'}${doisDigitos(dataAtual.getMinutes())} • ${doisDigitos(dataAtual.getDate())}/${doisDigitos(dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}`
+    // dataHoraAt.innerHTML = `${doisDigitos(dataAtual.getHours())}${doisP ? ' ' : ':'}${doisDigitos(dataAtual.getMinutes())} • ${doisDigitos(dataAtual.getDate())}/${doisDigitos(dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}`
 
-    let clockAtualUpdate = setInterval(() => {
-        dataAtual = new Date()
-        doisP = !doisP
-        dataHoraAt.innerHTML = `${doisDigitos(dataAtual.getHours())}${doisP ? ' ' : ':'}${doisDigitos(dataAtual.getMinutes())} • ${doisDigitos(dataAtual.getDate())}/${doisDigitos(dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}`
-    }, 1000)
+    // let clockAtualUpdate = setInterval(() => {
+    //     dataAtual = new Date()
+    //     doisP = !doisP
+    //     dataHoraAt.innerHTML = `${doisDigitos(dataAtual.getHours())}${doisP ? ' ' : ':'}${doisDigitos(dataAtual.getMinutes())} • ${doisDigitos(dataAtual.getDate())}/${doisDigitos(dataAtual.getMonth() + 1)}/${dataAtual.getFullYear()}`
+    // }, 1000)
 
     // Elementos HTML
     const mainWrapper = document.querySelector('main')
